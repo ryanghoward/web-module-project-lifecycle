@@ -2,10 +2,12 @@ import React from "react";
 
 class Follower extends React.Component {
   render() {
+    const { follower } = this.props;
+
     return (
       <div className="follower">
-        <img width='200px' src='https://avatars.githubusercontent.com/u/77358128?v=4' />
-        <a href='https://github.com/PriscilaMonteiro' target='_black'><p>PriscilaMonteiro</p></a>
+        <img width='200px' src={follower.avatar_url} />
+        <a href={follower.html_url} target='_black'><p>{follower.login}</p></a>
       </div>
     )
   }
