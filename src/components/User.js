@@ -6,8 +6,8 @@ class User extends React.Component {
 
     return (
       <div id='userinfo'>
-        <img src={user.avatar_url} />
         <a href={user.html_url} target='_blank'><h3>{user.name}</h3></a>
+        <img src={user.avatar_url} />
         <p>Username: {user.login}</p>
         <p>Location: {user.location}</p>
         <p>Repos: {user.public_repos}</p>

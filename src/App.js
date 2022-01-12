@@ -34,12 +34,31 @@ class App extends React.Component {
     }
   }
 
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      currentUser: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    axios.get(`https://api.github.com/users/${this.state.currentUser}`)
+      .then(resp => {
+        // console.log(resp);
+        this.setState({
+          ...this.state,
+          user: resp.data
+        });
+      })
+  }
+
   render() {
     return(
       <div>
         <h1>GitHub Info</h1>
-        <form>
-          <input placeholder={'Search GitHub...'} />
+        <form onSubmit={this.handleSubmit}>
+          <input placeholder={'Search GitHub...'} onChange={this.handleChange} />
           <button>Search</button>
         </form>
         <User user={this.state.user} />
